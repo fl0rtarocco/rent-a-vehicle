@@ -1,0 +1,10 @@
+<h1>All vehicles</h1>
+<ul>
+  <%= @vehicles.each do |vehicle| %>
+    <li>
+      <%= vehicle.category %>
+      <%= vehicle.description %>
+      <%= vehicle.price %>
+    </li>
+  <% end %>
+</ul>
