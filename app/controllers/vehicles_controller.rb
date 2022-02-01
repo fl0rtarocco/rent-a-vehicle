@@ -15,6 +15,8 @@ class VehiclesController < ApplicationController
     @vehicle.update(vehicle_params)
     redirect_to vehicle_path(@vehicle)
   end
+  
+  private 
   def vehicle_params
     params.require(:vehicle).permit(:category, :price, :description, :name)
   end
