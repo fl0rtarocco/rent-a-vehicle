@@ -1,20 +1,20 @@
 class VehiclePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user: user)
     end
   end
 
-  def show?
-    true
-  end
-
-  def new?
-    true
-  end
+  # def new?
+  #   true
+  # end
 
   def create?
     true
+  end
+
+  def show?
+    user_is_owner
   end
 
   def update?

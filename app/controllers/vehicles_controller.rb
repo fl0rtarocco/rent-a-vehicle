@@ -2,7 +2,7 @@ class VehiclesController < ApplicationController
   before_action :find_vehicle, only: [:show]
 
   def index
-    @vehicles = Vehicle.all
+    # @vehicles = Vehicle.all
     @vehicles = policy_scope(Vehicle)
   end
 
@@ -11,12 +11,15 @@ class VehiclesController < ApplicationController
 
   def new
     @vehicle = Vehicle.new
+    authorize @vehicle
   end
 
   def create
 
     @vehicle = Vehicle.new(strong_params)
     @vehicle.user = current_user
+    authorize @vehicle
+
     if @vehicle.save
       redirect_to @vehicle, notice: 'Vehicle was successfully created'
     else
