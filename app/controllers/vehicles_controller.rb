@@ -9,13 +9,6 @@ class VehiclesController < ApplicationController
   def show
   end
 
-  private
-
-  def find_vehicle
-    @vehicle = Vehicle.find(params[:id])
-    authorize @vehicle
-  end
-
   def new
     @vehicle = Vehicle.new
   end
@@ -32,6 +25,11 @@ class VehiclesController < ApplicationController
   end
 
   private
+
+  def find_vehicle
+    @vehicle = Vehicle.find(params[:id])
+    authorize @vehicle
+  end
 
   def strong_params
     params.require(:vehicle).permit(:description, :category, :price, :name)
