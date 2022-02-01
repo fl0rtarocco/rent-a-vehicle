@@ -15,7 +15,12 @@ class VehiclesController < ApplicationController
     @vehicle.update(vehicle_params)
     redirect_to vehicle_path(@vehicle)
   end
-  
+
+  def destroy 
+    @vehicle = Vehicle.find(params[:id])
+    @vehicle.destroy
+  end 
+
   private 
   def vehicle_params
     params.require(:vehicle).permit(:category, :price, :description, :name)
