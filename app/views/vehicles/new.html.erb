@@ -1,0 +1,8 @@
+
+<%= simple_form_for @vehicle do |f| %>
+  <%= f.input :name %>
+  <%= f.input :price %>
+  <%= f.input :description  %>
+  <%= f.select :category, ["Elevator", "Car", "Motorcycle", "Scooter", "Giraffe", "Truck", "Tanks", "Private Jet"] %>
+  <%= f.submit  %>
+<% end %>
