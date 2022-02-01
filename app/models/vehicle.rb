@@ -3,5 +3,5 @@ class Vehicle < ApplicationRecord
   has_many :bookings, dependent: :destroy
   validates :category, presence: true, inclusion: { in: ["Elevator", "Car", "Motorcycle", "Scooter", "Giraffe", "Truck", "Tanks", "Private Jet"] }
   validates :name, presence: true
-  validates :price, presence: true, numericality: { only_integer: true}
+  validates :price, presence: true, numericality: true
 end
