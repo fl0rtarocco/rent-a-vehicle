@@ -5,5 +5,6 @@ class VehiclesController < ApplicationController
 
   def show
     @vehicle = Vehicle.find(params[:id])
+    authorize @vehicle
   end
 end
