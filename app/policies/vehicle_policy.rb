@@ -1,11 +1,12 @@
 class VehiclePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.admin?
-        scope.all
-      else
-      scope.where(user: user)
-      end
+      scope.all
+      # if user.admin?
+      #   scope.all
+      # else
+      #   scope.where(user: user)
+      # end
     end
   end
 
@@ -18,7 +19,7 @@ class VehiclePolicy < ApplicationPolicy
   end
 
   def show?
-    user_is_owner_or_admin
+    true
   end
 
   def update?
