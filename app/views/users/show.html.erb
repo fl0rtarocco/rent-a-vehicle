@@ -1,4 +1,12 @@
-<h1>All vehicles</h1>
+<% if current_user %>
+  <% if current_user.id == @vehicles.first.user.id %>
+    <h1>Your Dashboard</h1>
+  <% else %>
+    <h1><%= "#{@name}'s Dashboard" %></h1>
+  <% end %>
+<% else %>
+  <h1><%= "#{@name}'s Dashboard" %></h1>
+<% end %>
 <div class="cards-container">
   <% @vehicles.each do |vehicle| %>
     <div class="card-vehicle">
@@ -10,10 +18,11 @@
             <p><%= vehicle.description %></p>
           </div>
           <h2 class="card-vehicle-pricing"><%= vehicle.price %></h2>
-          <%= link_to profile_path(vehicle.user) do %>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
-          <% end %>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
         </div>
+        <%= "User: #{vehicle.user.id} - #{vehicle.user.first_name} #{vehicle.user.last_name}" %>
     </div>
   <% end %>
 </div>
+
+<%= link_to "Back to Overview", vehicles_path, class: "btn btn-primary" %>
