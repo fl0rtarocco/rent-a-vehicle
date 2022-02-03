@@ -25,6 +25,7 @@ fourth_user.save!
 
 fifth_user = User.new(first_name: "Andre", last_name:"Ferrer" ,email: "email5@hotmail.com",password: 123456 )
 fifth_user.save!
+
 puts "created 5 users"
 
 Vehicle.destroy_all
