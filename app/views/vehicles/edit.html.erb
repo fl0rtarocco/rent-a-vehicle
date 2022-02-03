@@ -1,0 +1,12 @@
+<div class="p-3">
+  <%= simple_form_for(@vehicle, method: :patch) do |f| %>
+    <%= f.input :category %>
+    <%= f.input :price%>
+    <%= f.input :description%>
+    <%= f.input :name%>
+    <%= f.submit 'Save' %>
+  <% end %>
+  <%= link_to root_path do %>
+    <p><i class="fas fa-arrow-left"></i> Go back</p>
+  <% end %>
+</div>

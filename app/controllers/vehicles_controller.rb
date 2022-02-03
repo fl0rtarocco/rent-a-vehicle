@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  before_action :find_vehicle, only: [:show]
+  before_action :find_vehicle, only: [:show, :edit, :update, :destroy]
 
   def index
     # @vehicles = Vehicle.all
@@ -15,8 +15,7 @@ class VehiclesController < ApplicationController
   end
 
   def create
-
-    @vehicle = Vehicle.new(strong_params)
+    @vehicle = Vehicle.new(vehicle_params)
     @vehicle.user = current_user
     authorize @vehicle
 
@@ -27,6 +26,18 @@ class VehiclesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @vehicle.update(vehicle_params)
+    redirect_to vehicle_path(@vehicle), notice: 'Vehicle updated'
+  end
+
+  def destroy
+    @vehicle.destroy
+  end
+
   private
 
   def find_vehicle
@@ -34,8 +45,8 @@ class VehiclesController < ApplicationController
     authorize @vehicle
   end
 
-  def strong_params
-    params.require(:vehicle).permit(:description, :category, :price, :name)
+  def vehicle_params
+    params.require(:vehicle).permit(:category, :price, :description, :name)
   end
 
 end
