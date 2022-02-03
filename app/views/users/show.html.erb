@@ -1,0 +1,28 @@
+<% if current_user %>
+  <% if current_user.id == @vehicles.first.user.id %>
+    <h1>Your Dashboard</h1>
+  <% else %>
+    <h1><%= "#{@name}'s Dashboard" %></h1>
+  <% end %>
+<% else %>
+  <h1><%= "#{@name}'s Dashboard" %></h1>
+<% end %>
+<div class="cards-container">
+  <% @vehicles.each do |vehicle| %>
+    <div class="card-vehicle">
+      <img src="https://static.eldiario.es/clip/0e99a115-5db8-4530-bdd3-e992a8f8cd97_16-9-discover-aspect-ratio_default_0.jpg" />
+        <div class="card-vehicle-infos">
+          <div>
+            <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
+            <p><%= vehicle.category %></p>
+            <p><%= vehicle.description %></p>
+          </div>
+          <h2 class="card-vehicle-pricing"><%= vehicle.price %></h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
+        </div>
+        <%= "User: #{vehicle.user.id} - #{vehicle.user.first_name} #{vehicle.user.last_name}" %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Back to Overview", vehicles_path, class: "btn btn-primary" %>
