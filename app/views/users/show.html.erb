@@ -1,3 +1,5 @@
+<% console %>
+
 <% if current_user %>
   <% if current_user.id == @user %>
     <h1>Your Dashboard</h1>
@@ -26,7 +28,7 @@
 </div>
 
 
-<% if (current_user)  && (current_user.id == @user) %>
+<% if (current_user)  && (current_user == @user) %>
   <% unless @in_bookings.empty? %>
     <h1>Incoming booking requests</h1>
     <table class="table">
