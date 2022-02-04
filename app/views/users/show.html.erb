@@ -26,7 +26,7 @@
 </div>
 
 
-<% if current_user %>
+<% if (current_user)  && (current_user.id == @vehicles.first.user.id) %>
   <% unless @in_bookings.empty? %>
     <h1>Incoming booking requests</h1>
     <table class="table">
