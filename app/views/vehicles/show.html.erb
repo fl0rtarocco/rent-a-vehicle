@@ -1,3 +1,15 @@
-<h1><%= @vehicle.description %></h1>
-<p><%= @vehicle.category %></p>
-<p><%= @vehicle.price %></p>
+<div class="vehicle-container">
+  <div class="vehicle-details-card">
+    <h1><%= @vehicle.name %></h1>
+    <div class="details-section">
+      <p class="category"><%= @vehicle.category %></p>
+      <p class="price"><%= @vehicle.price %> € per day</p>
+    </div>
+    <img class="vehicle-image" src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRisOP5rFA5ldi7r3Bo1P53q9VfNZ6ligXR17S3z4vPodIvdJn2HWAM1BkU7knn8XEwY8tAtFM5kYlaKQA_M4I" alt="vehicle picture">
+    <h3>Details</h3>
+    <p><%= @vehicle.description %></p>
+  </div>
+  <div class="booking-request">
+    <a class="btn-ghost" href="#">Request a booking</a>
+  </div>
+</div>

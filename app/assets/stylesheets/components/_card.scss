@@ -3,6 +3,8 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 8px;
+  cursor: pointer;
+  caret-color: red;
 }
 
 .card-vehicle > img {
@@ -22,7 +24,6 @@
   opacity: .7;
   margin: 0;
 }
-
 
 .card-vehicle .card-vehicle-infos {
   padding: 16px;

@@ -4,7 +4,9 @@
     <%= f.input :price%>
     <%= f.input :description%>
     <%= f.input :name%>
+    <%= f.input :photo, as: :file %>
     <%= f.submit 'Save' %>
+   
   <% end %>
   <%= link_to root_path do %>
     <p><i class="fas fa-arrow-left"></i> Go back</p>
