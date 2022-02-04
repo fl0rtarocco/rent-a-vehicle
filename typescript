@@ -1,0 +1,52 @@
+Script started on 2022-02-03 23:42:11+01:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="112" LINES="29"]
+ * Starting PostgreSQL 12 database server       [112G [106G[ OK ]
+[1m[7m%[27m[1m[0m                                                                                                                ]2;pfrang@DESKTOP-B5LUVF8:~/code/pfrang/rent-a-vehicle]1;..ent-a-vehicle[0m[27m[24m[J[01;32m➜  [36mrent-a-vehicle[00m [01;34mgit:([31madd-bookmark-model|MERGING[34m) [33m✗[00m [K[?1h=[?2004h[0m[27m[24m[J[01;32m➜  [36mrent-a-vehicle[00m [01;34mgit:([31madd-bookmark-model|MERGING[34m) [33m✗[00m [32mr[39m[1m[31mr[1m[31ma[0m[39m[1m[31mr[1m[31ma[1m[31mi[0m[39m[1m[31mi[1m[31ml[0m[39m[0m[32mr[0m[32ma[0m[32mi[0m[32ml[32ms[39m[1m[31mr[1m[31ma[1m[31mi[1m[31ml[0m[39m[39m [1m[31mi[0m[39m[0m[39m [1m[31mr[1m[31ma[0m[39m[0m[39m [0m[32mr[39m[0m[39m [39m [32mg[39m[1m[31mg[1m[31mi[0m[39m[0m[32mg[0m[32mi[32mt[39m [4md[24m[24mdiff[?1l>[?2004l
+]2;git diff]1;git[?1h=[1mdiff --cc app/views/vehicles/index.html.erb[m[m
+[1mindex 72f7cd4,a8b57de..0000000[m[m
+[1m--- a/app/views/vehicles/index.html.erb[m[m
+[1m+++ b/app/views/vehicles/index.html.erb[m[m
+[36m@@@ -1,20 -1,33 +1,52 @@@[m[m
+[32m++<<<<<<< HEAD[m[m
+[32m +<% console %>[m[m
+[32m +<h1>All vehicles</h1>[m[m
+[32m +<div class="cards-container">[m[m
+[32m +  <% @vehicles.each do |vehicle| %>[m[m
+[32m +    <div class="card-vehicle">[m[m
+[32m +      <img src="https://static.eldiario.es/clip/0e99a115-5db8-4530-bdd3-e992a8f8cd97_16-9-discover-aspect-ratio_defau[m[7m>[27m
+[32m +        <div class="card-vehicle-infos">[m[m
+[32m +          <div>[m[m
+[32m +            <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>[m[m
+[32m +            <p><%= vehicle.category %></p>[m[m
+[32m +            <p><%= vehicle.description %></p>[m[m
+[32m +          </div>[m[m
+[32m +          <h2 class="card-vehicle-pricing"><%= vehicle.price %></h2>[m[m
+[32m +          <%= link_to profile_path(vehicle.user) do %>[m[m
+[32m +            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />[m[m
+[32m +          <% end %>[m[m
+[32m++=======[m[m
+[32m+ <div class="title-search">[m[m
+[32m+     <h1>All vehicles</h1>[m[m
+[32m+     <div class="seach-input form-inline">[m[m
+[32m+       <form action="#" accept-charset="UTF-8" method="#">[m[m
+[32m+       <input type="text" name="query" id="query" class="form-control" placeholder="Search for a Vehicle" />[m[m
+[32m+       <input type="submit" name="commit" value="Search" class="search-button stop" data-disable-with="Search" />[m[m
+:[K[K[32m+       </form>[m[m
+:[K[K[32m+     </div>[m[m
+:[K[K[32m+ </div>[m[m
+:[K[K[32m+ [m[m
+:[K[K[32m+ [m[m
+:[K[K[32m+ <div class="content">[m[m
+:[K[K[32m+     <div class="cards">[m[m
+:[K[K[32m+       <% @vehicles.each do |vehicle| %>[m[m
+:[K[K[32m+         <div class="card-vehicle">[m[m
+:[K[K[32m+           <img src="https://static.eldiario.es/clip/0e99a115-5db8-4530-bdd3-e992a8f8cd97_16-9-discover-aspect-ratio_d[m[7m>[27m
+:[K[K[32m+             <div class="card-vehicle-infos">[m[m
+:[K[K[32m+               <div>[m[m
+:[K[K[32m+                 <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>[m[m
+:[K[K[32m+                 <p><%= vehicle.category %></p>[m[m
+:[K[K[32m+                 <p><%= vehicle.description %></p>[m[m
+:[K[K[32m+               </div>[m[m
+:[K[K[32m+               <h2 class="card-vehicle-pricing"><%= vehicle.price %></h2>[m[m
+:[K[K[32m+               <%= link_to profile_path(vehicle.user) do %>[m[m
+:[K[K[32m+                 <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordere[m[7m>[27m
+:[K[K[32m+          
