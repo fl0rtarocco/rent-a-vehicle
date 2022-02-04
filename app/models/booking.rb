@@ -2,17 +2,17 @@ class Booking < ApplicationRecord
   belongs_to :vehicle
   belongs_to :user
 
-  validates :status, inclusion: { in: ["Accpeted", "Pending", "Rejected"] }
+  # validates :status, inclusion: { in: ["Accpeted", "Pending", "Rejected"] }
   validates :booking_from, :booking_to, presence: true
-  validate :booking_to_after_booking_from
+  # validate :booking_to_after_booking_from
 
-  private
+  # private
 
-  def booking_to_after_booking_from
-    return if booking_to.blank? || booking_from.blank?
+  # def booking_to_after_booking_from
+  #   return if booking_to.blank? || booking_from.blank?
 
-    if booking_to < booking_from
-      errors.add(:end_date, "must be after the start date")
-    end
-  end
+  #   if booking_to < booking_from
+  #     errors.add(:booking_from, "must be after the start date")
+  #   end
+  # end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :vehicles do
     resources :bookings, only: [:new, :create]
   end
+  resources :bookings, only: [:show]
   get 'profile', to: 'users#show'
   get 'profile/:id', to: 'users#show'
 end
