@@ -1,11 +1,11 @@
 <% if current_user %>
-  <% if current_user.id == @vehicles.first.user.id %>
+  <% if current_user.id == @user %>
     <h1>Your Dashboard</h1>
   <% else %>
-    <h1><%= "#{@name}'s Dashboard" %></h1>
+    <h1><%= "#{@user.first_name} #{@user.last_name}'s Dashboard" %></h1>
   <% end %>
 <% else %>
-  <h1><%= "#{@name}'s Dashboard" %></h1>
+  <h1><%= "#{@user.first_name} #{@user.last_name}'s Dashboard" %></h1>
 <% end %>
 <div class="cards-container">
   <% @vehicles.each do |vehicle| %>
@@ -26,12 +26,12 @@
 </div>
 
 
-<% if (current_user)  && (current_user.id == @vehicles.first.user.id) %>
+<% if (current_user)  && (current_user.id == @user) %>
   <% unless @in_bookings.empty? %>
     <h1>Incoming booking requests</h1>
     <table class="table">
       <tr>
-        <th> User </th>
+        <th> From User </th>
         <th> Vehicle </th>
         <th> Booking from </th>
         <th> Booking to </th>
@@ -58,7 +58,7 @@
     <h1>Outgoing booking requests</h1>
       <table class="table">
         <tr>
-          <th> User </th>
+          <th> To User </th>
           <th> Vehicle </th>
           <th> Booking from </th>
           <th> Booking to </th>
@@ -66,7 +66,7 @@
         </tr>
         <% @out_bookings.each do |booking| %>
         <tr>
-          <td><%= "#{booking.user.first_name} #{booking.user.last_name}" %></td>
+          <td><%= "#{booking.vehicle.user.first_name} #{booking.vehicle.user.last_name}" %></td>
           <td><%= booking.vehicle.name %></td>
           <td><%= booking.booking_from %></td>
           <td><%= booking.booking_to %></td>

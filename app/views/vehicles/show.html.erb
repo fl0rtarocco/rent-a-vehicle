@@ -10,6 +10,6 @@
     <p><%= @vehicle.description %></p>
   </div>
   <div class="booking-request">
-    <a class="btn-ghost" href="#">Request a booking</a>
+    <%= link_to "Request a booking", new_vehicle_booking_path(@vehicle), class: "btn-ghost" %>
   </div>
 </div>
