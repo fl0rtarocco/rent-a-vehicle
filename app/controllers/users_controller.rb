@@ -16,6 +16,12 @@ class UsersController < ApplicationController
       @out_bookings = Booking.where(user_id: current_user.id)
       @in_bookings = Booking.where(vehicle_id: @vehicles)
     end
-      authorize @vehicles
+    @markers = @vehicles.geocoded.map do |vehicle|
+      {
+        lat: vehicle.latitude,
+        lng: vehicle.longitude
+      }
+    end
+    authorize @vehicles
   end
 end

@@ -1,94 +1,106 @@
-<% if current_user %>
-  <% if current_user.id == @user %>
-    <h1>Your Dashboard</h1>
+<div class="container-dashboard">
+  <% if current_user %>
+    <% if current_user.id == @user %>
+      <h1>Your Dashboard</h1>
+    <% else %>
+      <h1><%= "#{@user.first_name} #{@user.last_name}'s Dashboard" %></h1>
+    <% end %>
   <% else %>
     <h1><%= "#{@user.first_name} #{@user.last_name}'s Dashboard" %></h1>
   <% end %>
-<% else %>
-  <h1><%= "#{@user.first_name} #{@user.last_name}'s Dashboard" %></h1>
-<% end %>
 
-<div class="content">
-  <div class="cards">
-    <% @vehicles.each do |vehicle| %>
-      <div class="card-vehicle">
-        <img src="https://static.eldiario.es/clip/0e99a115-5db8-4530-bdd3-e992a8f8cd97_16-9-discover-aspect-ratio_default_0.jpg" />
-          <div class="card-vehicle-infos">
-            <div>
-              <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
-              <p><%= vehicle.category %></p>
-              <p><%= vehicle.description %></p>
+  <div class="content">
+    <div class="cards">
+      <% @vehicles.each do |vehicle| %>
+        <div class="card-vehicle">
+          <% if vehicle.photos.any? %>
+            <%= cl_image_tag(vehicle.photos.first.key,
+            width: 400, height: 300, crop: :fill) %>
+          <% else %>
+            <img class="vehicle-image" src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRisOP5rFA5ldi7r3Bo1P53q9VfNZ6ligXR17S3z4vPodIvdJn2HWAM1BkU7knn8XEwY8tAtFM5kYlaKQA_M4I" alt="vehicle picture">
+          <% end %>
+            <div class="card-vehicle-infos">
+              <div>
+                <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
+                <p><%= vehicle.category %></p>
+                <p><%= vehicle.description %></p>
+              </div>
+              <h2 class="card-vehicle-pricing"><%= vehicle.price %></h2>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
             </div>
-            <h2 class="card-vehicle-pricing"><%= vehicle.price %></h2>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
-          </div>
-          <%= "User: #{vehicle.user.id} - #{vehicle.user.first_name} #{vehicle.user.last_name}" %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
-<% if (current_user)  && (current_user == @user) %>
-  <% unless @in_bookings.empty? %>
-    <h1>Incoming booking requests</h1>
-    <table class="table">
-      <tr>
-        <th> From User </th>
-        <th> Vehicle </th>
-        <th> Booking from </th>
-        <th> Booking to </th>
-        <th> Accept </th>
-        <th> Reject </th>
-      </tr>
-      <% @in_bookings.each do |booking| %>
-      <tr>
-        <td><%= "#{booking.user.first_name} #{booking.user.last_name}" %></td>
-        <td><%= booking.vehicle.name %></td>
-        <td><%= booking.booking_from %></td>
-        <td><%= booking.booking_to %></td>
-        <% if booking.status == "Pending" %>
-          <td><%= link_to "Accept booking", accept_booking_path(booking), method: :put, class:'btn btn-primary btn-sm' %></td>
-          <td><%= link_to "Reject booking", reject_booking_path(booking), method: :put, class:'btn btn-danger btn-sm' %></td>
-        <% elsif booking.status == "Accepted" %>
-          <td>✅</td>
-          <td></td>
-        <% else %>
-          <td></td>
-          <td>✅</td>
-        <% end %>
-      </tr>
+        </div>
       <% end %>
-    </table>
-    <% else %>
-    <h1>You have no bookings for your vehicle(s)</h1>
-  <% end %>
+    </div>
+      <div id="map"
+        style="width: 100%; height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+  </div>
 
-  <% unless @out_bookings.empty? %>
 
-    <h1>Outgoing booking requests</h1>
+  <% if (current_user)  && (current_user == @user) %>
+    <% unless @in_bookings.empty? %>
+      <h3>Incoming booking requests</h3>
       <table class="table">
         <tr>
-          <th> To User </th>
+          <th> From User </th>
           <th> Vehicle </th>
           <th> Booking from </th>
           <th> Booking to </th>
-          <th> Status </th>
+          <th> Accept </th>
+          <th> Reject </th>
         </tr>
-        <% @out_bookings.each do |booking| %>
+        <% @in_bookings.each do |booking| %>
         <tr>
-          <td><%= "#{booking.vehicle.user.first_name} #{booking.vehicle.user.last_name}" %></td>
+          <td><%= "#{booking.user.first_name} #{booking.user.last_name}" %></td>
           <td><%= booking.vehicle.name %></td>
           <td><%= booking.booking_from %></td>
           <td><%= booking.booking_to %></td>
-          <td><%= booking.status %></td>
+          <% if booking.status == "Pending" %>
+            <td><%= link_to "Accept booking", accept_booking_path(booking), method: :put, class:'btn btn-primary btn-sm' %></td>
+            <td><%= link_to "Reject booking", reject_booking_path(booking), method: :put, class:'btn btn-danger btn-sm' %></td>
+          <% elsif booking.status == "Accepted" %>
+            <td>✅</td>
+            <td></td>
+          <% else %>
+            <td></td>
+            <td>❌</td>
+          <% end %>
         </tr>
         <% end %>
       </table>
       <% else %>
-      <h1>You have no active bookings</h1>
+      <h3>You have no bookings for your vehicle(s)</h3>
     <% end %>
 
-<% end %>
+    <% unless @out_bookings.empty? %>
 
-<%= link_to "Back to Overview", vehicles_path, class: "btn-ghost" %>
+      <h3>Outgoing booking requests</h3>
+        <table class="table">
+          <tr>
+            <th> To User </th>
+            <th> Vehicle </th>
+            <th> Booking from </th>
+            <th> Booking to </th>
+            <th> Status </th>
+          </tr>
+          <% @out_bookings.each do |booking| %>
+          <tr>
+            <td><%= "#{booking.vehicle.user.first_name} #{booking.vehicle.user.last_name}" %></td>
+            <td><%= booking.vehicle.name %></td>
+            <td><%= booking.booking_from %></td>
+            <td><%= booking.booking_to %></td>
+            <td><%= booking.status %></td>
+          </tr>
+          <% end %>
+        </table>
+        <% else %>
+        <h3>You have no active bookings</h3>
+      <% end %>
+
+  <% end %>
+
+  <%= link_to "Back to Overview", vehicles_path, class: "btn-ghost" %>
+
+</div>

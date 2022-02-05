@@ -32,23 +32,23 @@ Vehicle.destroy_all
 puts " Cleared Vehicle db"
 
 CATEGORY_ARRAY = ["Elevator", "Car", "Motorcycle", "Scooter", "Giraffe", "Truck", "Tanks", "Private Jet"]
-first_vehicle = Vehicle.new(name: "Tesla", description: "X", price: 10, category: CATEGORY_ARRAY.sample )
+first_vehicle = Vehicle.new(name: "Tesla", description: "X", price: 10, category: CATEGORY_ARRAY.sample, address: 'London Tower' )
 first_vehicle.user_id = second_user.id
 first_vehicle.save!
 
-second_vehicle = Vehicle.new(name: "BMW", description: "Fancy BMW", price: 100000, category: CATEGORY_ARRAY.sample )
+second_vehicle = Vehicle.new(name: "BMW", description: "Fancy BMW", price: 100000, category: CATEGORY_ARRAY.sample, address: 'Big Ben')
 second_vehicle.user_id = first_user.id
 second_vehicle.save!
 
-third_vehicle = Vehicle.new(name: "Toyota", description: "Corolla", price: 17, category: CATEGORY_ARRAY.sample )
+third_vehicle = Vehicle.new(name: "Toyota", description: "Corolla", price: 17, category: CATEGORY_ARRAY.sample, address: 'Eiffel Tower' )
 third_vehicle.user_id = fifth_user.id
 third_vehicle.save!
 
-fourth_vehicle = Vehicle.new(name: "Rolls Royce", description: "20 yrs old", price: 15, category: CATEGORY_ARRAY.sample)
+fourth_vehicle = Vehicle.new(name: "Rolls Royce", description: "20 yrs old", price: 15, category: CATEGORY_ARRAY.sample, address: 'Parc Guell' )
 fourth_vehicle.user_id = fourth_user.id
 fourth_vehicle.save!
 
-fifth_vehicle = Vehicle.new(name: "Porsche", description:"Cool Porsche" , price: 20, category: CATEGORY_ARRAY.sample)
+fifth_vehicle = Vehicle.new(name: "Porsche", description:"Cool Porsche" , price: 20, category: CATEGORY_ARRAY.sample, address: 'Rome' )
 fifth_vehicle.user_id = fourth_user.id
 fifth_vehicle.save!
 puts "created 5 vehicles"
