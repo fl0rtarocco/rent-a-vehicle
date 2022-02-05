@@ -10,24 +10,27 @@
 
 
 <div class="content">
-    <div class="cards">
-      <% @vehicles.each do |vehicle| %>
-        <div class="card-vehicle">
-          <img src="https://static.eldiario.es/clip/0e99a115-5db8-4530-bdd3-e992a8f8cd97_16-9-discover-aspect-ratio_default_0.jpg" />
-            <div class="card-vehicle-infos">
-              <div>
-                <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
-                <p><%= vehicle.category %></p>
-                <p><%= vehicle.description %></p>
-              </div>
-              <h2 class="card-vehicle-pricing"><%= vehicle.price %></h2>
-              <%= link_to profile_path(vehicle.user) do %>
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
-              <% end %>
+  <div class="cards">
+    <% @vehicles.each do |vehicle| %>
+      <div class="card-vehicle">
+        <img src="https://static.eldiario.es/clip/0e99a115-5db8-4530-bdd3-e992a8f8cd97_16-9-discover-aspect-ratio_default_0.jpg" />
+          <div class="card-vehicle-infos">
+            <div>
+              <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
+              <p><%= vehicle.category %></p>
+              <p><%= vehicle.description %></p>
             </div>
-        </div>
-      <% end %>
-    </div>
-    <img id="map"
-      src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoiZnJpZG1hbm5pa2xhcyIsImEiOiJja3d6OWUzamQwMHc1MnJteDUxY3ZwZ3JpIn0.d5SN46hLGIEX-x6pGhGr_Q'>
+            <h2 class="card-vehicle-pricing"><%= vehicle.price %></h2>
+            <%= link_to profile_path(vehicle.user) do %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+  <div id="map"
+    style="width: 100%; height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>

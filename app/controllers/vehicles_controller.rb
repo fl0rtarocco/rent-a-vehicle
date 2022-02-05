@@ -4,6 +4,12 @@ class VehiclesController < ApplicationController
   def index
     # @vehicles = Vehicle.all
     @vehicles = policy_scope(Vehicle)
+    @markers = @vehicles.geocoded.map do |vehicle|
+      {
+        lat: vehicle.latitude,
+        lng: vehicle.longitude
+      }
+    end
   end
 
   def show
@@ -36,6 +42,8 @@ class VehiclesController < ApplicationController
 
   def destroy
     @vehicle.destroy
+    redirect_to vehicles_path, notice: 'Vehicle was successfully deleted'
+
   end
 
   private
@@ -46,7 +54,7 @@ class VehiclesController < ApplicationController
   end
 
   def vehicle_params
-    params.require(:vehicle).permit(:category, :price, :description, :name, :photo)
+    params.require(:vehicle).permit(:category, :price, :description, :name, :photo, :address)
   end
 
 end
