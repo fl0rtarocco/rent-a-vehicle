@@ -6,7 +6,6 @@
   cursor: pointer;
   caret-color: red;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
 }
 
 .card-vehicle > img {
@@ -19,12 +18,17 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  text-decoration: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 .card-vehicle p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 .card-vehicle .card-vehicle-infos {
@@ -42,10 +46,15 @@
   width: 40px;
 }
 
-
 .card-vehicle-infos .card-vehicle-pricing {
   position: absolute;
-  right: 0px;
-  bottom: 0px;
+  right: 16px;
+  bottom: 20px;
   width: 40px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.card-vehicle-infos a {
+ color: black;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
