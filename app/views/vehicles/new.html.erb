@@ -2,7 +2,8 @@
 <%= simple_form_for @vehicle do |f| %>
   <%= f.input :name %>
   <%= f.input :price %>
-  <%= f.input :description  %>
+  <%= f.input :description %>
+  <%= f.input :address %>
   <%= f.select :category, ["Elevator", "Car", "Motorcycle", "Scooter", "Giraffe", "Truck", "Tanks", "Private Jet"] %>
   <%= f.input :photo, as: :file %>
   <%= f.submit  %>
