@@ -1,5 +1,6 @@
 class CreateBookings < ActiveRecord::Migration[6.1]
   def change
+    drop_table :bookings
     create_table :bookings do |t|
       t.date :booking_from
       t.date :booking_to
