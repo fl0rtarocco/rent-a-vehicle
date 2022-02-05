@@ -8,3 +8,25 @@
 .booking-request {
   margin: 16px;
 }
+
+.vehicle-details-card {
+  position: relative;
+
+}
+
+.delete {
+  background-color: #504d4d;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 0 4px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  text-decoration: none;
+}
+
+.delete a {
+  text-decoration: none;
+}
