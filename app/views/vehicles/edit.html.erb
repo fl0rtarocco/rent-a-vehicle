@@ -1,15 +1,19 @@
-<div class="p-3">
-  <%= simple_form_for(@vehicle, method: :patch) do |f| %>
-    <%= f.input :category %>
-    <%= f.input :price %>
-    <%= f.input :description %>
-    <%= f.input :address %>
-    <%= f.input :name %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit 'Save' %>
+<div class="container">
+  <div class="containertwo" style="margin: 100px auto;
+    padding: 10px;">
 
-  <% end %>
-  <%= link_to root_path do %>
-    <p><i class="fas fa-arrow-left"></i> Go back</p>
-  <% end %>
+    <%= simple_form_for(@vehicle, method: :patch) do |f| %>
+      <%= f.input :category %>
+      <%= f.input :price %>
+      <%= f.input :description %>
+      <%= f.input :address %>
+      <%= f.input :name %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit 'Save' %>
+
+    <% end %>
+    <%= link_to root_path do %>
+      <p><i class="fas fa-arrow-left"></i> Go back</p>
+    <% end %>
+  </div>
 </div>
