@@ -4,8 +4,10 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 8px;
   cursor: pointer;
-  caret-color: red;
+  caret-color: #ff0000;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 400px;
+  height: 300px;
 }
 
 .card-vehicle > img {

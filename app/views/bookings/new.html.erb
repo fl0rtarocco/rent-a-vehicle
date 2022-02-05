@@ -1,6 +1,10 @@
-
-<%= simple_form_for [@vehicle, @booking] do |f| %>
-  <%= f.input :booking_from %>
-  <%= f.input :booking_to %>
-  <%= f.submit  %>
-<% end %>
+<div class="container">
+  <div class="containertwo" style="margin: 100px auto;
+    padding: 10px;">
+    <%= simple_form_for [@vehicle, @booking] do |f| %>
+      <%= f.input :booking_from %>
+      <%= f.input :booking_to %>
+      <%= f.submit  %>
+    <% end %>
+  </div>
+</div>
