@@ -13,7 +13,12 @@
     <div class="cards">
       <% @vehicles.each do |vehicle| %>
         <div class="card-vehicle">
-          <img src="https://static.eldiario.es/clip/0e99a115-5db8-4530-bdd3-e992a8f8cd97_16-9-discover-aspect-ratio_default_0.jpg" />
+         <% if vehicle.photos.any? %>
+        <%= cl_image_tag(vehicle.photos.first.key,
+          width: 400, height: 300, crop: :fill) %>
+        <% else %>
+          <img class="vehicle-image" src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRisOP5rFA5ldi7r3Bo1P53q9VfNZ6ligXR17S3z4vPodIvdJn2HWAM1BkU7knn8XEwY8tAtFM5kYlaKQA_M4I" alt="vehicle picture">
+        <% end %>
             <div class="card-vehicle-infos">
               <div>
                 <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
