@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   resources :vehicles do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:show]
+  resources :bookings, only: [:show, :update] do
+    member do
+      put :accept
+      put :reject
+    end
+  end
   get 'profile', to: 'users#show'
   get 'profile/:id', to: 'users#show'
 end
