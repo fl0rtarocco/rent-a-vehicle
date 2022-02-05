@@ -19,30 +19,30 @@
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
   padding: 16px;
   flex-grow: 1;
 }
 
 
-@media(max-width: 1200px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  #map {
-    display: block;
-  }
-}
+// @media(max-width: 1200px) {
+//   .cards {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+//   #map {
+//     display: block;
+//   }
+// }
 
-@media(max-width: 576px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-   #map {
-    display: none;
-  }
-}
+// @media(max-width: 576px) {
+//   .cards {
+//     grid-template-columns: 1fr 1fr;
+//   }
+//    #map {
+//     display: none;
+//   }
+// }
 
 h1 {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
