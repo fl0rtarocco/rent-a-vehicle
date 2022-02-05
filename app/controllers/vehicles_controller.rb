@@ -20,7 +20,7 @@ class VehiclesController < ApplicationController
     authorize @vehicle
 
     if @vehicle.save
-      redirect_to @vehicle, notice: 'Vehicle was successfully created'
+      redirect_to profile_path, notice: 'Vehicle was successfully created'
     else
       render :new
     end
@@ -36,6 +36,8 @@ class VehiclesController < ApplicationController
 
   def destroy
     @vehicle.destroy
+    redirect_to vehicles_path, notice: 'Vehicle was successfully deleted'
+
   end
 
   private

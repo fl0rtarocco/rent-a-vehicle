@@ -3,8 +3,35 @@
   justify-content: space-between;
   align-items: flex-start;
   width: 1000px;
+  padding: 10px;
 }
 
 .booking-request {
   margin: 16px;
+}
+
+.vehicle-details-card {
+  position: relative;
+}
+
+.delete {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 0 4px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  text-decoration: none;
+}
+
+.delete a {
+  text-decoration: none;
+  color: rgb(75, 71, 71);
+}
+
+.delete a:hover {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
 }
