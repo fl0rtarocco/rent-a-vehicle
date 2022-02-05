@@ -1,7 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: transparent;
+  background-color: rgba($color: #726f6f, $alpha: 0.5);
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .navbar-lewagon .navbar-collapse {
