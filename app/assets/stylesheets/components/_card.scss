@@ -5,6 +5,8 @@
   margin: 8px;
   cursor: pointer;
   caret-color: red;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 .card-vehicle > img {
@@ -37,5 +39,13 @@
   position: absolute;
   right: 16px;
   top: -20px;
+  width: 40px;
+}
+
+
+.card-vehicle-infos .card-vehicle-pricing {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
   width: 40px;
 }

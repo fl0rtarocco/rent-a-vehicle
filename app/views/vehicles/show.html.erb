@@ -8,7 +8,7 @@
     <img class="vehicle-image" src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRisOP5rFA5ldi7r3Bo1P53q9VfNZ6ligXR17S3z4vPodIvdJn2HWAM1BkU7knn8XEwY8tAtFM5kYlaKQA_M4I" alt="vehicle picture">
     <h3>Details</h3>
     <p><%= @vehicle.description %></p>
-    <div class="delete"><%= link_to "Delete", new_vehicle_path(@vehicle.id), method: :delete %></div>
+    <div class="delete"><%= link_to "Delete", vehicle_path(@vehicle), method: :delete %></div>
   </div>
   <div class="booking-request">
     <%= link_to "Request a booking", new_vehicle_booking_path(@vehicle), class: "btn-ghost" %>
