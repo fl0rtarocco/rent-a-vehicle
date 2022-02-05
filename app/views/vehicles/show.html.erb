@@ -10,14 +10,19 @@
     <p><%= @vehicle.description %></p>
     <div class="delete"><%= link_to "Delete", vehicle_path(@vehicle), method: :delete %></div>
   </div>
-  <div class="booking-request">
-    <%= link_to "Request a booking", new_vehicle_booking_path(@vehicle), class: "btn-ghost" %>
-
-  </div>
+  <% if current_user %>
+    <% unless current_user.id == @vehicle.user.id %>
+      <div class="booking-request">
+        <%= link_to "Request a booking", new_vehicle_booking_path(@vehicle), class: "btn-ghost" %>
+      </div>
+    <% end %>
+  <% else  %>
+    <div class="booking-request">
+      <%= link_to "Request a booking", new_vehicle_booking_path(@vehicle), class: "btn-ghost" %>
+    </div>
+  <% end %>
 </div>
 
-
 <div class="booking-request">
-    <%= link_to "<- Back", vehicles_path, class: "btn-back" %>
-
-  </div>
+   <%= link_to "<- Back", vehicles_path, class: "btn-back" %>
+</div>
