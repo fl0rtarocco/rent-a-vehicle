@@ -5,6 +5,6 @@
   <%= f.input :description %>
   <%= f.input :address %>
   <%= f.select :category, ["Elevator", "Car", "Motorcycle", "Scooter", "Giraffe", "Truck", "Tanks", "Private Jet"] %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photos, as: :file, input_html: {multiple: true} %>
   <%= f.submit  %>
 <% end %>
