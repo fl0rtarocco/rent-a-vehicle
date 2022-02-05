@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :vehicle
   belongs_to :user
 
-  # validates :status, inclusion: { in: ["Accpeted", "Pending", "Rejected"] }
+  validates :status, inclusion: { in: ["Accepted", "Pending", "Rejected"] }
   validates :booking_from, :booking_to, presence: true
   # validate :booking_to_after_booking_from
 
