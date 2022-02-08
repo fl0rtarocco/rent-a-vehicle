@@ -65,37 +65,45 @@ puts "created 5 vehicles"
 
 Booking.destroy_all
 puts "clear booking DB"
-# first_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
-# first_booking.vehicle_id = second_vehicle.id
-# first_booking.user_id = fifth_user.id
-# first_booking.save!
+first_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
+first_booking.vehicle_id = second_vehicle.id
+first_booking.user_id = fifth_user.id
+first_booking.save!
 
-# second_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
-# second_booking.vehicle_id = fifth_vehicle.id
-# second_booking.user_id = second_user.id
-# second_booking.save!
+second_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
+second_booking.vehicle_id = fifth_vehicle.id
+second_booking.user_id = second_user.id
+second_booking.save!
 
-# third_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
-# third_booking.vehicle_id = second_vehicle.id
-# third_booking.user_id = third_user.id
-# third_booking.save!
+third_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
+third_booking.vehicle_id = second_vehicle.id
+third_booking.user_id = third_user.id
+third_booking.save!
 
-# fourth_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
-# fourth_booking.vehicle_id = third_vehicle.id
-# fourth_booking.user_id = fourth_user.id
-# fourth_booking.save!
+fourth_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
+fourth_booking.vehicle_id = third_vehicle.id
+fourth_booking.user_id = fourth_user.id
+fourth_booking.save!
 
-# fifth_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
-# fifth_booking.vehicle_id = fourth_vehicle.id
-# fifth_booking.user_id = second_user.id
-# fifth_booking.save!
+fifth_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
+fifth_booking.vehicle_id = fourth_vehicle.id
+fifth_booking.user_id = second_user.id
+fifth_booking.save!
 
-# fifth_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
-# fifth_booking.vehicle_id = fourth_vehicle.id
-# fifth_booking.user_id = first_user.id
-# fifth_booking.save!
+fifth_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
+fifth_booking.vehicle_id = fourth_vehicle.id
+fifth_booking.user_id = first_user.id
+fifth_booking.save!
 
-# puts "Created 6 bookings"
+puts "Created 6 bookings"
+
+reviewone = Review.new(comment: "pretty bad experience", stars: 3)
+
+reviewone.booking = third_booking
+
+reviewone.save!
+
+puts "Created 1 review"
 
 
 puts "ALL DONE WITH SEEDS"
