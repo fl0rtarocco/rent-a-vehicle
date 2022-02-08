@@ -1,0 +1,42 @@
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0px !important;
+}
+
+.small-vehicle-card a {
+  color: black;
+}
+
+a:focus-visible {
+  outline: 0px !important;
+}
+
+.small-details-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.small-vehicle-image {
+  width: 200px;
+  height: 100%
+}
+
+.small-category {
+  background-color: rgb(80, 77, 77);
+  color:white;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 8px;
+  padding: 0 4px;
+}
+
+.small-price {
+  font-weight: bold;
+  font-size: 12px;
+}
