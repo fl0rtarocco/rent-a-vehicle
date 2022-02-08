@@ -14,6 +14,18 @@ class VehiclesController < ApplicationController
   end
 
   def show
+    # if params[:booking_id]
+    #   @booking = Booking.new(booking_params)
+    #   @booking.vehicle_id = params[:id]
+    #   @booking.user = current_user
+    #   @booking.status = "Pending"
+    #   if @booking.save
+    #     redirect_to @booking, notice: 'Booking was successfully created'
+    #   else
+    #     render :show
+    #   end
+    # end
+    @booking = Booking.new
   end
 
   def new
@@ -48,6 +60,10 @@ class VehiclesController < ApplicationController
   end
 
   private
+
+  def booking_params
+    params.require(:booking).permit(:booking_from, :booking_to)
+  end
 
   def find_vehicle
     @vehicle = Vehicle.find(params[:id])

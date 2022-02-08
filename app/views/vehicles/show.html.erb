@@ -16,18 +16,37 @@
     <div class="edit"><%= link_to "Edit", edit_vehicle_path(@vehicle)%></div>
     <div class="delete"><%= link_to "Delete", vehicle_path(@vehicle), method: :delete %></div>
   </div>
-  <% if current_user %>
+</div>
+
+
+<% if current_user %>
     <% unless current_user.id == @vehicle.user.id %>
-      <div class="booking-request">
-        <%= link_to "Request a booking", new_vehicle_booking_path(@vehicle), class: "btn-ghost" %>
+      <div class="container">
+        <div class="containertwo" style="margin: 100px auto;
+          padding: 10px;">
+          <%= simple_form_for [@vehicle, @booking], method: :post do |f| %>
+            <%= f.input :booking_from, as: :string, input_html: { class: "datepicker"} %>
+            <%= f.input :booking_to, as: :string, input_html: { class: "datepicker"} %>
+            <%= f.submit class: 'btn-ghost'  %>
+          <% end %>
+        </div>
       </div>
     <% end %>
-  <% else  %>
-    <div class="booking-request">
-      <%= link_to "Request a booking", new_vehicle_booking_path(@vehicle), class: "btn-ghost" %>
+<% else %>
+  <div class="container">
+      <div class="containertwo" style="margin: 100px auto;
+        padding: 10px;">
+        <%= simple_form_for [@vehicle, @booking], method: :post do |f| %>
+          <%= f.input :booking_from, as: :string, input_html: { class: "datepicker"} %>
+          <%= f.input :booking_to, as: :string, input_html: { class: "datepicker"} %>
+          <%= f.submit class: 'btn-ghost'  %>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-</div>
+<% end %>
+
+
+
 
 <div class="booking-request">
    <%= link_to "<- Back", vehicles_path, class: "btn-back" %>
