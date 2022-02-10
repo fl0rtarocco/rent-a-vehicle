@@ -2,7 +2,6 @@ class VehiclesController < ApplicationController
   before_action :find_vehicle, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @vehicles = Vehicle.all
     @vehicles = policy_scope(Vehicle)
     @markers = @vehicles.geocoded.map do |vehicle|
       {
@@ -14,17 +13,6 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    # if params[:booking_id]
-    #   @booking = Booking.new(booking_params)
-    #   @booking.vehicle_id = params[:id]
-    #   @booking.user = current_user
-    #   @booking.status = "Pending"
-    #   if @booking.save
-    #     redirect_to @booking, notice: 'Booking was successfully created'
-    #   else
-    #     render :show
-    #   end
-    # end
     @booking = Booking.new
   end
 
