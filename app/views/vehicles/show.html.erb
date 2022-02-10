@@ -32,3 +32,7 @@
 <div class="booking-request">
    <%= link_to "<- Back", vehicles_path, class: "btn-back" %>
 </div>
+
+<% @review.each do |review| %>
+<%= review.comment %>
+<% end %>

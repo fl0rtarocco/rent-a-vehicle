@@ -97,13 +97,17 @@ fifth_booking.save!
 
 puts "Created 6 bookings"
 
+Review.destroy_all
+
 reviewone = Review.new(comment: "pretty bad experience", stars: 3)
-
 reviewone.booking = third_booking
-
 reviewone.save!
 
-puts "Created 1 review"
+reviewtwo = Review.new(comment: "amazing experience", stars: 3)
+reviewtwo.booking = second_booking
+reviewtwo.save!
+
+puts "Created 2 reviews"
 
 
 puts "ALL DONE WITH SEEDS"

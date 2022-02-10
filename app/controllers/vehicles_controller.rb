@@ -13,6 +13,8 @@ class VehiclesController < ApplicationController
   end
 
   def show
+    @booking = Booking.where(vehicle_id: @vehicle.id)
+    @review = Review.where(booking_id: @booking)
   end
 
   def new
