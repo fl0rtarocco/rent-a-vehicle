@@ -10,7 +10,6 @@ User.destroy_all
 
 puts "Cleared User db"
 
-
 first_user = User.new(first_name: "Florencia", last_name: "Tarocco",email: "email1@hotmail.com",password: 123456 )
 first_user.save!
 
@@ -107,7 +106,10 @@ reviewtwo = Review.new(comment: "amazing experience", stars: 3)
 reviewtwo.booking = second_booking
 reviewtwo.save!
 
-puts "Created 2 reviews"
+reviewthree = Review.new(comment: "Ye loved it", stars: 4)
+reviewthree.booking = second_booking
+reviewthree.save!
 
+puts "Created 3 reviews"
 
 puts "ALL DONE WITH SEEDS"
