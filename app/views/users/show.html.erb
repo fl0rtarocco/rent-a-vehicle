@@ -84,6 +84,7 @@
             <th> Booking from </th>
             <th> Booking to </th>
             <th> Status </th>
+            <th> Leave a Review </th>
           </tr>
           <% @out_bookings.each do |booking| %>
           <tr>
@@ -92,7 +93,10 @@
             <td><%= booking.booking_from %></td>
             <td><%= booking.booking_to %></td>
             <td><%= booking.status %></td>
+            <td><%= link_to "Leave review", new_booking_review_path(booking.id) %></td>
           </tr>
+
+
           <% end %>
         </table>
         <% else %>

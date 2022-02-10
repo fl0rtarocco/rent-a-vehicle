@@ -89,7 +89,7 @@ fifth_booking.vehicle_id = fourth_vehicle.id
 fifth_booking.user_id = second_user.id
 fifth_booking.save!
 
-fifth_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Pending")
+fifth_booking = Booking.new(booking_from: Date.new(2020,2,3), booking_to: Date.new(2020,2,10), status: "Accepted")
 fifth_booking.vehicle_id = fourth_vehicle.id
 fifth_booking.user_id = first_user.id
 fifth_booking.save!
