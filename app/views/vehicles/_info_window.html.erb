@@ -1,0 +1,13 @@
+<% if vehicle.photos.any? %>
+  <%= cl_image_tag(vehicle.photos.first.key,
+    class: "small-vehicle-image") %>
+<% else %>
+  <img class="small-vehicle-image" src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRisOP5rFA5ldi7r3Bo1P53q9VfNZ6ligXR17S3z4vPodIvdJn2HWAM1BkU7knn8XEwY8tAtFM5kYlaKQA_M4I" alt="vehicle picture">
+<% end %>
+<div class="small-vehicle-card p-2">
+  <h4><%= link_to vehicle.name, vehicle_path(vehicle) %></h4>
+  <div class="small-details-section">
+    <p class="small-category m-0"><%= vehicle.category %></p>
+    <p class="small-price m-0"><%= vehicle.price %> € per day</p>
+  </div>
+</div>

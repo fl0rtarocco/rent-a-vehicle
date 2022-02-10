@@ -12,14 +12,18 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @booking.vehicle_id = params[:vehicle_id]
-    @booking.user = current_user
-    @booking.status = "Pending"
-    if @booking.save
-      redirect_to @booking, notice: 'Booking was successfully created'
+    if current_user
+      @booking = Booking.new(booking_params)
+      @booking.vehicle_id = params[:vehicle_id]
+      @booking.user = current_user
+      @booking.status = "Pending"
+      if @booking.save
+        redirect_to @booking, notice: 'Booking was successfully created'
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_user_session_path
     end
   end
 

@@ -2,19 +2,20 @@ class VehiclesController < ApplicationController
   before_action :find_vehicle, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @vehicles = Vehicle.all
     @vehicles = policy_scope(Vehicle)
     @markers = @vehicles.geocoded.map do |vehicle|
       {
         lat: vehicle.latitude,
-        lng: vehicle.longitude
+        lng: vehicle.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { vehicle: vehicle })
       }
     end
   end
 
   def show
-    @booking = Booking.where(vehicle_id: @vehicle.id)
-    @review = Review.where(booking_id: @booking)
+    booking = Booking.where(vehicle_id: @vehicle.id)
+    @review = Review.where(booking_id: booking)
+    @booking = Booking.new
   end
 
   def new
@@ -49,6 +50,10 @@ class VehiclesController < ApplicationController
   end
 
   private
+
+  def booking_params
+    params.require(:booking).permit(:booking_from, :booking_to)
+  end
 
   def find_vehicle
     @vehicle = Vehicle.find(params[:id])

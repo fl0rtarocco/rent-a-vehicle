@@ -20,12 +20,12 @@
           <img class="vehicle-image" src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRisOP5rFA5ldi7r3Bo1P53q9VfNZ6ligXR17S3z4vPodIvdJn2HWAM1BkU7knn8XEwY8tAtFM5kYlaKQA_M4I" alt="vehicle picture">
         <% end %>
         <div class="card-vehicle-infos">
-          <div>
-            <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
-            <p><%= vehicle.category %></p>
-            <p><%= vehicle.description %></p>
+          <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
+          <p><%= vehicle.description %></p>
+          <div class="card-vehicle-details">
+            <p class="category"><%= vehicle.category %></p>
+            <h2 class="card-vehicle-pricing"><%= vehicle.price %> € per day</h2>
           </div>
-          <h2 class="card-vehicle-pricing"><%= vehicle.price %></h2>
           <%= link_to profile_path(vehicle.user) do %>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
           <% end %>
