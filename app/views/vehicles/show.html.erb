@@ -29,10 +29,29 @@
   <% end %>
 </div>
 
-<div class="booking-request">
-   <%= link_to "<- Back", vehicles_path, class: "btn-back" %>
-</div>
 
-<% @review.each do |review| %>
-<%= review.comment %>
-<% end %>
+  <div class="booking-request">
+    <%= link_to "<- Back", vehicles_path, class: "btn-back" %>
+  </div>
+
+  <h1>Reviews</h1>
+<div class="reviews">
+
+  <% @review.each do |review| %>
+    <div class="notification">
+      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+      <div class="notification-content">
+        <p><small><%= review.created_at %></small></p>
+        <p>"<%= review.comment %>"</p>
+        <% review.stars.to_i.times do %>
+        <%= "★" %>
+        <% end %>
+        <% (5 - review.stars.to_i).times  do %>
+        <%= "☆" %>
+        <% end %>
+
+        <br>
+        <h6><%= review.booking.vehicle.user.first_name  %> <%= review.booking.vehicle.user.last_name %></h6>
+      </div>
+  <% end %>
+</div>
