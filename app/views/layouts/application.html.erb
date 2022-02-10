@@ -11,17 +11,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
-
-    <%= render 'components/navbar' %>
-    <div style="padding-bottom: 100px;">
-      <%= yield %>
+  <body style="min-height: 100vh; margin:0; position: relative;">
+    <div class="d-flex flex-column min-vh-100">
+      <%= render 'components/navbar' %>
+      <div class="flex-grow-1">
+        <%= yield %>
+      </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+      <%= render 'components/footer' %>
     </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-    <%= render 'components/footer' %>
   </body>
 
 </html>
