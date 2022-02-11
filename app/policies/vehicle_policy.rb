@@ -3,11 +3,11 @@ class VehiclePolicy < ApplicationPolicy
     def resolve
       scope.where.not(latitude: nil, longitude: nil)
      
-      # if user.admin?
-      #   scope.all
-      # else
-      #   scope.where(user: user)
-      # end
+      #if user.admin?
+        #scope.all
+       #else
+        #scope.where(user: user)
+       #end
     end
   end
 
