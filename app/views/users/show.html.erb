@@ -1,6 +1,6 @@
 <div class="container-dashboard">
   <% if current_user %>
-    <% if current_user.id == @user %>
+    <% if current_user.id == @user.id %>
       <h1>Your Dashboard</h1>
     <% else %>
       <h1><%= "#{@user.first_name} #{@user.last_name}'s Dashboard" %></h1>
@@ -19,23 +19,33 @@
           <% else %>
             <img class="vehicle-image" src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRisOP5rFA5ldi7r3Bo1P53q9VfNZ6ligXR17S3z4vPodIvdJn2HWAM1BkU7knn8XEwY8tAtFM5kYlaKQA_M4I" alt="vehicle picture">
           <% end %>
-            <div class="card-vehicle-infos">
-              <div>
-                <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
-                <p><%= vehicle.category %></p>
-                <p><%= vehicle.description %></p>
-              </div>
-              <h2 class="card-vehicle-pricing"><%= vehicle.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
+          <div class="card-vehicle-infos">
+            <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
+            <div class="card-vehicle-details">
+              <p><%= vehicle.description %></p>
+              <h2 class="card-vehicle-pricing"><%= vehicle.price %> € per day</h2>
             </div>
+            <div class="card-vehicle-details">
+              <p class="category"><%= vehicle.category %></p>
+              <div>
+                <%= link_to edit_vehicle_path(vehicle) do %>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                <% end %>
+                <%= link_to vehicle_path(vehicle), method: :delete, data: {confirm: "Are you sure?"} do %>
+                  <i class="fa-solid fa-trash-can"></i>
+                <% end %>
+              </div>
+            </div>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
+          </div>
         </div>
-      <% end %>
+    <% end %>
+  </div>
+    <div id="map"
+      style="width: 100%; height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-      <div id="map"
-        style="width: 100%; height: 600px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
   </div>
 
 
@@ -84,6 +94,7 @@
             <th> Booking from </th>
             <th> Booking to </th>
             <th> Status </th>
+            <th> Leave a Review </th>
           </tr>
           <% @out_bookings.each do |booking| %>
           <tr>
@@ -92,7 +103,10 @@
             <td><%= booking.booking_from %></td>
             <td><%= booking.booking_to %></td>
             <td><%= booking.status %></td>
+            <td><%= link_to "Leave review", new_booking_review_path(booking.id) %></td>
           </tr>
+
+
           <% end %>
         </table>
         <% else %>

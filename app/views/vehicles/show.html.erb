@@ -1,3 +1,4 @@
+
 <div class="vehicle-container">
   <div class="vehicle-details-card">
     <h1><%= @vehicle.name %></h1>
@@ -16,6 +17,7 @@
             <% end %>
           <% else %>
             <img class="vehicle-image" src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRisOP5rFA5ldi7r3Bo1P53q9VfNZ6ligXR17S3z4vPodIvdJn2HWAM1BkU7knn8XEwY8tAtFM5kYlaKQA_M4I" alt="vehicle picture">
+
           <% end %>
         </div>
         <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
@@ -28,10 +30,21 @@
         </button>
       </div>
     </div>
-    <h3>Details</h3>
-    <p><%= @vehicle.description %></p>
-    <div class="edit"><%= link_to "Edit", edit_vehicle_path(@vehicle)%></div>
-    <div class="delete"><%= link_to "Delete", vehicle_path(@vehicle), method: :delete %></div>
+    <div class="details-section">
+        <div>
+          <h3>Details</h3>
+          <p><%= @vehicle.description %></p>
+        </div>
+        <div class="edit-delete-buttons">
+          <%= link_to edit_vehicle_path(@vehicle) do %>
+            <i class="fa-solid fa-pen-to-square "></i>
+          <% end %>
+          <%= link_to vehicle_path(@vehicle), method: :delete, data: {confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="booking-section">
@@ -85,11 +98,12 @@
         <br>
         <h6><%= review.booking.vehicle.user.first_name  %> <%= review.booking.vehicle.user.last_name %></h6>
       </div>
+  </div>
+  <% end %>
 </div>
-<% end %>
 
-</div>
 
 <div class="booking-request">
     <%= link_to "Back", vehicles_path, class: "btn-back" %>
 </div>
+
