@@ -1,108 +1,101 @@
-<div class="vehicle-container">
-  <div class="vehicle-details-card">
-    <h1><%= @vehicle.name %></h1>
-    <div class="details-section">
-      <p class="category"><%= @vehicle.category %></p>
-      <p class="price"><%= @vehicle.price %> € per day</p>
-    </div>
-    <div id="carousel-style">
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <% if @vehicle.photos.any? %>
-            <% @vehicle.photos.each_with_index do |photo, index| %>
-              <div class="carousel-item  <%= index == 0 ? "active" : "" %> ">
-                <%= cl_image_tag(photo.key, class: "d-block w-100") %>
-              </div>
-            <% end %>
-          <% else %>
-            <img class="vehicle-image" src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRisOP5rFA5ldi7r3Bo1P53q9VfNZ6ligXR17S3z4vPodIvdJn2HWAM1BkU7knn8XEwY8tAtFM5kYlaKQA_M4I" alt="vehicle picture">
-
-          <% end %>
-        </div>
-        <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </button>
+<div style="width: 1000px; margin: 0 auto;">
+  <div class="vehicle-container">
+    <div class="vehicle-details-card">
+      <h1><%= @vehicle.name %></h1>
+      <div class="details-section">
+        <p class="category"><%= @vehicle.category %></p>
+        <p class="price"><%= @vehicle.price %> € per day</p>
       </div>
-    </div>
-    <div class="details-section">
-        <div>
-          <h3>Details</h3>
-          <p><%= @vehicle.description %></p>
-        </div>
+      <div id="carousel-style">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <% if @vehicle.photos.any? %>
+              <% @vehicle.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item  <%= index == 0 ? "active" : "" %> ">
+                  <%= cl_image_tag(photo.key, class: "d-block w-100") %>
+                </div>
+              <% end %>
+            <% else %>
+              <img class="vehicle-image" src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRisOP5rFA5ldi7r3Bo1P53q9VfNZ6ligXR17S3z4vPodIvdJn2HWAM1BkU7knn8XEwY8tAtFM5kYlaKQA_M4I" alt="vehicle picture">
 
-    </div>
-      <% if current_user == @vehicle.user %>
-        <div class="edit-delete-buttons d-flex justify-content-end">
-          <div>
-            <%= link_to edit_vehicle_path(@vehicle) do %>
-              <i class="fa-solid fa-pen-to-square "></i>
             <% end %>
           </div>
+          <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="details-section">
           <div>
-            <%= link_to vehicle_path(@vehicle), method: :delete, data: {confirm: "Are you sure?"} do %>
-              <i class="fa-solid fa-trash-can"></i>
-            <% end %>
+            <h3>Details</h3>
+            <p><%= @vehicle.description %></p>
+          </div>
+      </div>
+        <% if current_user == @vehicle.user %>
+          <div class="edit-delete-buttons d-flex justify-content-end">
+            <div>
+              <%= link_to edit_vehicle_path(@vehicle) do %>
+                <i class="fa-solid fa-pen-to-square "></i>
+              <% end %>
+            </div>
+            <div>
+              <%= link_to vehicle_path(@vehicle), method: :delete, data: {confirm: "Are you sure?"} do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+    <div class="flex-grow">
+      <div class="booking-section">
+        <% unless current_user == @vehicle.user %>
+          <div class="booking-card">
+            <h3>Book now!</h3>
+              <div class="containertwo" style="margin: 10px auto;
+                padding: 10px;">
+                <%= simple_form_for [@vehicle, @booking], html: { class:"d-flex flex-column align-items-center" }, method: :post do |f| %>
+                  <%= f.input :booking_from, as: :string, input_html: { class: "datepicker"} %>
+                  <%= f.input :booking_to, as: :string, input_html: { class: "datepicker"} %>
+                  <%= f.submit class: 'btn-book'  %>
+                <% end %>
+              </div>
           </div>
         <% end %>
       </div>
+      <div id="map"
+        style="width: 280px; height: 235px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
   </div>
-
-  <div class="flex-grow">
-    <div class="booking-section">
-      <% unless current_user == @vehicle.user %>
-        <div class="booking-card">
-          <h3>Book now!</h3>
-            <div class="containertwo" style="margin: 100px auto;
-              padding: 10px;">
-              <%= simple_form_for [@vehicle, @booking], html: { class:"d-flex flex-column align-items-center" }, method: :post do |f| %>
-                <%= f.input :booking_from, as: :string, input_html: { class: "datepicker"} %>
-                <%= f.input :booking_to, as: :string, input_html: { class: "datepicker"} %>
-                <%= f.submit class: 'btn-book'  %>
-              <% end %>
-            </div>
-        </div>
+  <div class="reviews-container" style="width:1000px;">
+    <h2>Reviews</h2>
+    <div class="reviews">
+      <% @review.each do |review| %>
+        <div class="notification">
+          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+          <div class="notification-content">
+            <p><small><%= review.created_at %></small></p>
+            <p>"<%= review.comment %>"</p>
+            <% review.stars.to_i.times do %>
+            <%= "★" %>
+            <% end %>
+            <% (5 - review.stars.to_i).times  do %>
+            <%= "☆" %>
+            <% end %>
+            <br>
+            <h6><%= review.booking.vehicle.user.first_name  %> <%= review.booking.vehicle.user.last_name %></h6>
+          </div>
+      </div>
       <% end %>
     </div>
-   </div>
-  
-    <div id="map"
-      style="width: 280px; height: 235px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
   </div>
-  <% end %>
-</div>
-<div class="reviews-container" style="width:1000px;">
-  <h2>Reviews</h2>
-  <div class="reviews">
-    <% @review.each do |review| %>
-      <div class="notification">
-        <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-        <div class="notification-content">
-          <p><small><%= review.created_at %></small></p>
-          <p>"<%= review.comment %>"</p>
-          <% review.stars.to_i.times do %>
-          <%= "★" %>
-          <% end %>
-          <% (5 - review.stars.to_i).times  do %>
-          <%= "☆" %>
-          <% end %>
-          <br>
-          <h6><%= review.booking.vehicle.user.first_name  %> <%= review.booking.vehicle.user.last_name %></h6>
-        </div>
-    </div>
-    <% end %>
+  <div class="booking-request">
+      <%= link_to "Back", vehicles_path, class: "btn-back" %>
   </div>
-
-</div>
-
-
-<div class="booking-request">
-    <%= link_to "Back", vehicles_path, class: "btn-back" %>
 </div>
