@@ -16,6 +16,12 @@ class VehiclesController < ApplicationController
     booking = Booking.where(vehicle_id: @vehicle.id)
     @review = Review.where(booking_id: booking)
     @booking = Booking.new
+    @markers = [
+      {
+        lat: @vehicle.latitude,
+        lng: @vehicle.longitude
+      }
+    ]
   end
 
   def new
