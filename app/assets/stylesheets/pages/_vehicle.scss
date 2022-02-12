@@ -46,14 +46,10 @@
 }
 
 .review-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
-  padding: 16px;
-  flex-grow: 1;
-  margin: 16px;
-  padding:24px;
+  display: flex;
+  justify-content: center;
   border-radius: 4px;
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: auto;
 }
