@@ -23,24 +23,26 @@
           <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
           <div class="card-vehicle-details">
             <p><%= vehicle.description %></p>
-            <h2 class="card-vehicle-pricing"><%= vehicle.price %> € per day</h2>
-          </div>
-            <div class="card-vehicle-details">
-              <p class="category"><%= vehicle.category %></p>
-              <div>
+            <div>
+              <% if current_user == vehicle.user %>
                 <%= link_to edit_vehicle_path(vehicle) do %>
                   <i class="fa-solid fa-pen-to-square"></i>
                 <% end %>
                 <%= link_to vehicle_path(vehicle), method: :delete, data: {confirm: "Are you sure?"} do %>
                   <i class="fa-solid fa-trash-can"></i>
                 <% end %>
-              </div>
+              <% end %>
             </div>
-            <%= link_to profile_path(vehicle.user) do %>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
-            <% end %>
           </div>
+          <div class="card-vehicle-details">
+            <p class="category"><%= vehicle.category %></p>
+            <h2 class="card-vehicle-pricing"><%= vehicle.price %> € per day</h2>
+          </div>
+          <%= link_to profile_path(vehicle.user) do %>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-vehicle-user avatar-bordered" />
+          <% end %>
         </div>
+      </div>
     <% end %>
   </div>
   <div id="map"
@@ -49,5 +51,3 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
-<i class="fa-solid fa-trash-can"></i>
