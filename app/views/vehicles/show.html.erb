@@ -73,9 +73,13 @@
       </div>
     </div>
   </div>
-  <div class="reviews-container" style="width:1000px;">
-    <h2>Reviews</h2>
-    <div class="reviews">
+
+
+  </div>
+
+  <div class="container" style="width:1000px;">
+    <h2 style ="text-align: center;">Reviews</h2>
+    <div class="review-card">
       <% @review.each do |review| %>
         <div class="notification">
           <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
@@ -91,11 +95,14 @@
             <br>
             <h6><%= review.booking.vehicle.user.first_name  %> <%= review.booking.vehicle.user.last_name %></h6>
           </div>
-      </div>
+        </div>
       <% end %>
     </div>
   </div>
+  
   <div class="booking-request">
       <%= link_to "Back", vehicles_path, class: "btn-back" %>
   </div>
+
+  
 </div>

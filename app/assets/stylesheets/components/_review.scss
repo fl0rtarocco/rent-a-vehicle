@@ -3,6 +3,13 @@
   grid-gap: 16px;
   padding: 16px;
   justify-content: center;
+  h2 {
+   text-align: center;
+  }
+  h6 {
+    font-style: italic;
+  }
+
 }
 .notification {
   display: flex;

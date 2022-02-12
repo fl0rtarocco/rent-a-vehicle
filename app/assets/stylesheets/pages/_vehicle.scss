@@ -44,3 +44,13 @@
   text-decoration: none;
   color: black;
 }
+
+.review-card {
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: auto;
+  padding: 16px;
+}
