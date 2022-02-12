@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
 
     @review.booking = @booking
     if @review.save
-      redirect_to profile_path, notice: 'Review was successfully created'
+      redirect_to vehicle_path(@booking.vehicle), notice: 'Review was successfully created'
     else
       render :new
     end

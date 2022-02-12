@@ -1,4 +1,10 @@
 class Vehicle < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :search_by_vehicle,
+    against: [:category, :price, :name, :address, :description],
+    using: {
+      tsearch: { prefix: true }
+    }
   belongs_to :user
   has_many :bookings, dependent: :destroy
   validates :category, presence: true, inclusion: { in: ["Elevator", "Car", "Motorcycle", "Scooter", "Giraffe", "Truck", "Tanks", "Private Jet"] }

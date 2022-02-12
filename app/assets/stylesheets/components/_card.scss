@@ -11,6 +11,10 @@
   border-radius: 4px;
 }
 
+.card-vehicle:hover {
+  transform: scale(1.1);
+}
+
 .card-vehicle > img {
   height: 200px;
   width: 100%;
@@ -54,8 +58,6 @@
   }
 }
 
-
-
 .card-vehicle-infos .card-vehicle-user {
   position: absolute;
   right: 16px;
@@ -69,9 +71,17 @@
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+
+.edit-delete-buttons {
+  position: absolute;
+  bottom: 16px;
+  right: 30px;
+}
+
 .edit-delete-buttons a {
   color: black;
   text-decoration: none;
+  margin-left: 16px;
   :hover {
     color: blue;
   }
