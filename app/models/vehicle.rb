@@ -1,7 +1,7 @@
 class Vehicle < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_by_vehicle,
-    against: [:category, :price, :name, :address, :description],
+    against: [:category, :price, :name, :address, :description, :address],
     using: {
       tsearch: { prefix: true }
     }

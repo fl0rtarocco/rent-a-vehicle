@@ -73,10 +73,8 @@
       </div>
     </div>
   </div>
-
-
   </div>
-
+  <% unless @review.empty? %>
   <div class="container" style="width:1000px;">
     <div class="review-card d-flex flex-column">
       <h2 style ="text-align: center;">Reviews</h2>
@@ -106,6 +104,7 @@
       </div>
     </div>
   </div>
+  <% end %>
 
   <div class="booking-request">
       <%= link_to "Back", vehicles_path, class: "btn-back" %>
