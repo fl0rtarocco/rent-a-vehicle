@@ -23,10 +23,6 @@
             <h2><%= link_to vehicle.name, vehicle_path(vehicle) %></h2>
             <div class="card-vehicle-details">
               <p><%= vehicle.description %></p>
-              <h2 class="card-vehicle-pricing"><%= vehicle.price %> € per day</h2>
-            </div>
-            <div class="card-vehicle-details">
-              <p class="category"><%= vehicle.category %></p>
               <div>
                 <%= link_to edit_vehicle_path(vehicle) do %>
                   <i class="fa-solid fa-pen-to-square"></i>
@@ -36,9 +32,13 @@
                 <% end %>
               </div>
             </div>
+            <div class="card-vehicle-details">
+              <p class="category"><%= vehicle.category %></p>
+              <h2 class="card-vehicle-pricing"><%= vehicle.price %> € per day</h2>
+            </div>
             <%= link_to profile_path(vehicle.user) do %>
             <% if vehicle.user.photo.attached? %>
-          
+
               <%= cl_image_tag(vehicle.user.photo.key,
                 width: 40, height: 40, crop: :fill, class:"card-vehicle-user avatar-bordered" ) %>
             <% else %>
