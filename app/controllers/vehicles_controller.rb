@@ -2,7 +2,12 @@ class VehiclesController < ApplicationController
   before_action :find_vehicle, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vehicles = policy_scope(Vehicle)
+    if params[:query].present?
+      @vehicles = policy_scope(Vehicle.search_by_vehicle(params[:query]))
+      flash[:notice] = "No records found based on the search" if @vehicles.blank?
+    else
+      @vehicles = policy_scope(Vehicle)
+    end
     @markers = @vehicles.geocoded.map do |vehicle|
       {
         lat: vehicle.latitude,
