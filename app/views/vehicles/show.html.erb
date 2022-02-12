@@ -50,14 +50,13 @@
           </div>
         <% end %>
       </div>
-  </div>
 
   <div class="flex-grow">
     <div class="booking-section">
       <% unless current_user == @vehicle.user %>
         <div class="booking-card">
           <h3>Book now!</h3>
-            <div class="containertwo" style="margin: 100px auto;
+            <div class="containertwo" style="margin: 10px auto;
               padding: 10px;">
               <%= simple_form_for [@vehicle, @booking], html: { class:"d-flex flex-column align-items-center" }, method: :post do |f| %>
                 <%= f.input :booking_from, as: :string, input_html: { class: "datepicker"} %>
@@ -68,15 +67,12 @@
         </div>
       <% end %>
     </div>
-   </div>
-  
     <div id="map"
       style="width: 280px; height: 235px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
-  <% end %>
 </div>
 <div class="reviews-container" style="width:1000px;">
   <h2>Reviews</h2>
