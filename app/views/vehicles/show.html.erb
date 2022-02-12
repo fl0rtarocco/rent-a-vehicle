@@ -80,8 +80,8 @@
 
 </div>
 
-
-<h2>Reviews</h2>
+<div class="container">
+<h2 style ="text-align: center;">Reviews</h2>
 <div class="review-card">
   <% @review.each do |review| %>
     <div class="notification">
@@ -102,7 +102,7 @@
   <% end %>
 </div>
 
-
+</div>
 <div class="booking-request">
     <%= link_to "Back", vehicles_path, class: "btn-back" %>
 </div>
