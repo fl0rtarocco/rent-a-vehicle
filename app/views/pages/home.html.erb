@@ -1,7 +1,12 @@
+<%# <div>
+ <video autoplay="autoplay" loop="loop" muted="muted" class="video-background" src="/assets/Tromeur_Knight2.mp4" type="video/mp4"></video>
+</div> %>
 
- <video autoplay="autoplay" loop="loop" muted="muted" class="video-background" src="/assets/Tromeur_Knight2.mp4"></video>
+<div id="hero">
+  <video playsinline autoplay muted loop poster="" class="video-background" width="100%">
+    <source src="/assets/Tromeur_Knight2.mp4" type="video/mp4">
+  </video>
 </div>
-
 
 <div class="banner">
   <div class="container">
@@ -10,4 +15,3 @@
       <%= link_to "Rent a vehicle now", vehicles_path, class: "btn btn-ghost" %>
   </div>
 </div>
-<div>
