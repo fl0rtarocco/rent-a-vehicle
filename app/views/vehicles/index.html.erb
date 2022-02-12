@@ -43,7 +43,7 @@
             </div>
             <%= link_to profile_path(vehicle.user) do %>
             <% if vehicle.user.photo.attached? %>
-          
+
               <%= cl_image_tag(vehicle.user.photo.key,
                 width: 100, height: 100, crop: :fill, class:"card-vehicle-user avatar-bordered" ) %>
             <% else %>
