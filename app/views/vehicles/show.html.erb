@@ -78,31 +78,33 @@
   </div>
 
   <div class="container" style="width:1000px;">
-    <h2 style ="text-align: center;">Reviews</h2>
-    <div class="review-card">
-      <% @review.each do |review| %>
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-          <div class="notification-content">
-            <p><small><%= review.created_at %></small></p>
-            <p>"<%= review.comment %>"</p>
-            <% review.stars.to_i.times do %>
-            <%= "★" %>
-            <% end %>
-            <% (5 - review.stars.to_i).times  do %>
-            <%= "☆" %>
-            <% end %>
-            <br>
-            <h6><%= review.booking.vehicle.user.first_name  %> <%= review.booking.vehicle.user.last_name %></h6>
+    <div class="review-card d-flex flex-column">
+      <h2 style ="text-align: center;">Reviews</h2>
+      <div class="d-flex justify-content-around">
+        <% @review.each do |review| %>
+          <div class="notification">
+            <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+            <div class="notification-content">
+              <p><small><%= review.created_at %></small></p>
+              <p>"<%= review.comment %>"</p>
+              <% review.stars.to_i.times do %>
+              <%= "★" %>
+              <% end %>
+              <% (5 - review.stars.to_i).times  do %>
+              <%= "☆" %>
+              <% end %>
+              <br>
+              <h6><%= review.booking.vehicle.user.first_name  %> <%= review.booking.vehicle.user.last_name %></h6>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-  
+
   <div class="booking-request">
       <%= link_to "Back", vehicles_path, class: "btn-back" %>
   </div>
 
-  
+
 </div>
