@@ -1,0 +1,24 @@
+.navbar-trans-root {
+  justify-content: space-between;
+  background-color: transparent;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.navbar-trans-root .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-trans-root .navbar-brand img {
+  width: 40px;
+}
+
+#title {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: #FADA5F;
+  border: 1px solid #4A4A4A;
+  font-size: 56px;
+  font-weight: bolder;
+}

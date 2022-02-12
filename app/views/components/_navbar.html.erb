@@ -1,4 +1,10 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<% if request.path == "/" %>
+  <% transbar = "navbar-trans-root" %>
+<% else %>
+  <% transbar = "navbar-lewagon" %>
+<% end %>
+
+<div class="navbar navbar-expand-sm navbar-light <%=transbar%>">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
         <%# <%= image_tag "logo2.png", alt: "My List", width: 50 %>

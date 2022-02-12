@@ -82,7 +82,7 @@
 
 
 <h2>Reviews</h2>
-<div class="reviews">
+<div class="review-card">
   <% @review.each do |review| %>
     <div class="notification">
       <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
@@ -106,4 +106,3 @@
 <div class="booking-request">
     <%= link_to "Back", vehicles_path, class: "btn-back" %>
 </div>
-
